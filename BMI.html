@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Mass Index</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- load jquery and bootstrap js -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+   count = () =>{
+     // Mengambil nilai dari elemen (get value)
+      let berat = document.getElementById('berat').value;
+      let tinggi = document.getElementById('tinggi').value;
+      let hasil = berat / (tinggi* tinggi);
+      let element = "";
+
+      // menentukan nilai pada elemen (set value)
+
+
+      if (berat != "" && tinggi!="") {
+        if (hasil < 18.5) {
+        element += '<div class="alert alert-success alert-dismissible">';
+        element += '<span class="close" data-dismiss="alert">&times;</span>';
+        element += 'Anda Kurus';
+        element += '</div>';
+        } else if (hasil >= 18.5 && hasil <= 22.9) {
+          element += '<div class="alert alert-success alert-dismissible">';
+          element += '<span class="close" data-dismiss="alert">&times;</span>';
+          element += 'Anda Normal';
+          element += '</div>';
+        } else if (hasil > 22.9 && hasil <= 24.9) {
+          element += '<div class="alert alert-warning alert-dismissible">';
+          element += '<span class="close" data-dismiss="alert">&times;</span>';
+          element += 'Anda Overweight';
+          element += '</div>';
+        } else if (hasil > 24.9) {
+          element += '<div class="alert alert-danger alert-dismissible">';
+          element += '<span class="close" data-dismiss="alert">&times;</span>';
+          element += 'Anda Obesitas';
+          element += '</div>';
+        }
+        else{
+          element += '<div class="alert alert-danger alert-dismissible">';
+          element += '<span class="close" data-dismiss="alert">&times;</span>';
+          element += 'Datanya Salah';
+          element += '</div>';
+        }
+      }else{
+        element += '<div class="alert alert-warning alert-dismissible">';
+        element += '<span class="close" data-dismiss="alert">&times;</span>';
+        element += 'Isi data dengan lengkap !';
+        element += '</div>';
+      }
+      document.getElementById('pesan').innerHTML = element;
+   }
+
+
+  </script>
+</head>
+  <body>
+    <div class="container col-12 h-100 my-auto d-flex justify-content-center">
+      <div class="card col-sm-4">
+        <div class="card-header">
+          <h4 align="center">Body Mass Index</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4 mt-3">
+              Berat
+            </div>
+            <div class="col-8 mt-3">
+            <input type="number" id="berat" class="form-control" placeholder="Berat (kg)">
+            </div>
+            <div class="col-4 mt-3">
+              Tinggi
+            </div>
+            <div class="col-8 mt-3">
+              <input type="number" id="tinggi" class="form-control" placeholder="Tinggi (m)">
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-info btn-block"
+          onclick="count()">Hitung</button>
+          <br>
+          <div class="row">
+            <div class="col-12 " >
+              <h3 align="center">Hasil</h3>
+            </div>
+          </div>
+          <div id="pesan">
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Membuat Form</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		function edit() {
+			event.preventDefault();
+			let ussername = document.getElementById("ussername").value;
+			let password = document.getElementById("password").value;
+			let element = "";
+			if (ussername != "" && password!="") {
+				if (ussername === "culametan" && password === "metmet") {
+					element += '<div class="alert alert-info alert-dismissible">';
+					element += '<span class="close" data-dismiss="alert">&times;</span>';
+					element += 'Berhasil Login';
+					element += '</div>';
+				}
+				else{
+					element += '<div class="alert alert-danger alert-dismissible">';
+					element += '<span class="close" data-dismiss="alert">&times;</span>';
+					element += 'Datanya Salah';
+					element += '</div>';
+				}
+			}else{
+				element += '<div class="alert alert-warning alert-dismissible">';
+				element += '<span class="close" data-dismiss="alert">&times;</span>';
+				element += 'Anda harus mengisi data dengan lengkap !';
+				element += '</div>';
+			}
+			document.getElementById('pesan').innerHTML = element;
+
+		}
+	</script>
+</head>
+<body>
+<div class="container col-12 h-100 my-auto d-flex justify-content-center">
+<div class="col-4">
+	<div class="login card">
+		<form onSubmit="edit()">
+			<div class="card-header bg-secondary">
+				<h2 align="center" >Login</h2>
+			</div>
+			<div class="card-header">
+				<div>
+					<label>Ussername :</label>
+					<input type="text" name="ussername" id="ussername" placeholder="ussername">
+				</div>
+				<div>
+					<label>Password:</label>
+					<input type="password" name="password" id="password" placeholder="password">
+				</div>
+			</div>
+			<div class="card-footer">
+				<input type="submit" value="Login" class="btn btn-block tombol">
+				<div id="pesan">
+
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>
+</div>
+</body>
+</html>
